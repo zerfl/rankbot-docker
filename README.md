@@ -1,15 +1,38 @@
-# twitch rank bot
+# twitch.tv Rocket League Rank Bot
 
-create `.env` file with the following content:
+An express server running inside a docker container.
+
+# Getting started
+
+## Running the server locally
+
+### Install dependencies
+```
+npm i
+```
+### Run the server
 
 ```
-TWITCH_BOT_USERNAME="botname"
-TWITCH_OAUTH_TOKEN="<your oauth token>"
-TWITCH_REFRESH_TOKEN="<your refresh token>"
-TWITCH_CHANNELS=<channel(s) for the bot to join. use a comma separated list for multiple channels> 
-EPIC_USERNAME=<epic username>
+npm start // or node server.js
 ```
 
-run `npm i` to install dependencies
+## Building the docker image
 
-run `npm start` to boot up
+Building the image is as easy as running
+```
+docker build . 
+```
+
+If you want to tag your image do this instead
+```
+docker build . -t yourtag/rankbot
+```
+
+## Create a docker container and run the image
+```
+docker run -p 12345:3000 -d yourtag/rankbot
+```
+where `12345` is the port you want to be mapped to your host
+
+# StreamElements integration
+TBA
