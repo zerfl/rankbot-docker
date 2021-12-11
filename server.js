@@ -5,6 +5,10 @@ const port = 3000;
 
 const profileUrlPrefix = `https://api.tracker.gg/api/v2/rocket-league/standard/profile/`;
 const validPlatforms = ["epic", "steam", "xbl", "psn", "switch"];
+const playlistMapper = new Map();
+playlistMapper.set(10, "1v1");
+playlistMapper.set(11, "2v2");
+playlistMapper.set(13, "3v3");
 
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
@@ -29,11 +33,6 @@ const checkStatus = (response) => {
 };
 
 const parseRanks = (data) => {
-  const playlistMapper = new Map();
-  playlistMapper.set(10, "1v1");
-  playlistMapper.set(11, "2v2");
-  playlistMapper.set(13, "3v3");
-
   const playlists = data.data.segments.filter((segment) => {
     return (
       [...playlistMapper.keys()].indexOf(segment.attributes.playlistId) !== -1
