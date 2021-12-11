@@ -69,7 +69,7 @@ app.get("/:platform/:username", async (req, res) => {
   const url = `${profileUrlPrefix}${platform}/${username}`;
 
   if (!isValidPlatform(platform)) {
-    res.status(400).send("[rankbot] Invalid platform BrokeBack");
+    res.status(400).send("Invalid platform BrokeBack");
     return;
   }
 
@@ -85,9 +85,7 @@ app.get("/:platform/:username", async (req, res) => {
     const data = await response.json();
     res.send(parseRanks(data));
   } catch (error) {
-    res
-      .status(error.response.status)
-      .send(`[rankbot] ${error.response.statusText} BrokeBack`);
+    res.send(`${error.response.statusText} BrokeBack`);
   }
 });
 
