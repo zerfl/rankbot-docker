@@ -64,7 +64,7 @@ const parseRanks = (data) => {
 };
 
 app.get("/:platform/:username", async (req, res) => {
-  const platform = req.params.platform;
+  const platform = req.params.platform.toLowerCase();
   const username = req.params.username;
   const url = `${profileUrlPrefix}${platform}/${username}`;
 
